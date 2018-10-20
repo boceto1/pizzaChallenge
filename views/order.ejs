@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>L'ultima Cena Pizzeria!</title>
+</head>
+
+<body>
+
+    <% include partials/navbar %>
+
+    <!-- Order Detail -->
+
+    <div class="container">
+        <div class="jumbotron">
+            <div id="order">
+
+            </div>
+        </div>
+    </div>
+
+        <h2 id="title" class="text-center">Order Detail - <%= order.name %></h2>
+        <br>
+        
+        <!-- CLIENT DATA -->
+
+        <div id="contact-info">
+            <div class="row">
+                <label class="col-sm-3">Name: </label>
+                <h5>{{name}}</h5>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">Address: </label>
+                <h5>{{address}}</h5>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-3">Phone #: </label>
+                <h5>{{phone}}</h5>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- SIZE AND INGREDIENTS -->
+
+        <table class="table bg-white table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="w-50">Size</th>
+                    <th class="w-50">Ingredients</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p id="size"> {{size}}</p>
+                    </td>
+                    <td id="ingredients">
+                        {{#ingredients}}
+                            <p>{{.}}</p>
+                        {{/ingredients}}
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <th id="total" class="text-right" colspan="2">Total: ${{total}}</th>
+                </tr>
+            </tbody>
+        </table>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js" integrity="sha256-ILqMXUXPam8LdBwbq5W6r1m0NxeP8ydLFqrYN+bMCeI="
+        crossorigin="anonymous"></script>
+
+    <!-- <script src="js/order-detail.js"></script> -->
+</body>
+
+</html>

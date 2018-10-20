@@ -1,0 +1,11 @@
+.jumbotron {
+    padding: 1em 1em;
+}
+
+#order-alert {
+    display: none;
+}
+
+.order {
+    display: none;
+}

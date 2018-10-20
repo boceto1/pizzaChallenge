@@ -1,0 +1,13 @@
+{
+    "id": 1,
+    "name": "Test Name",
+    "address": "La Previsora",
+    "phone": "555 555 555",
+    "size": "Large $10",
+    "ingredients": [
+        "Extra Cheese $1",
+        "Pineapple $1",
+        "Caviar $3"
+    ],
+    "total": 14
+}

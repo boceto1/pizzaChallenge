@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "Jhon Rambo",
+        "address": "Vietnam Street, 123",
+        "phone": "555 555 555",
+        "total": 15
+    },
+    {
+        "id": "2",
+        "name": "Marty McFly",
+        "address": "Hill Valley, 123",
+        "phone": "555 555 555",
+        "total": 25
+    },
+    {
+        "id": "3",
+        "name": "Chuck Norris",
+        "address": "Beverly Hills, 123",
+        "phone": "555 555 555",
+        "total": 10
+    }
+]
