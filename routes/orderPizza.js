@@ -18,6 +18,8 @@ app.get('/orders',ctrlOrder.getOrders);
 
 app.get('/order/:idOrder',ctrlOrder.getOrder);
 
+app.get('/statistics',ctrlOrder.getStatistics);
+
 /**
  * Post
  */

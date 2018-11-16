@@ -23,30 +23,26 @@
     <div class="container">
         <div class="jumbotron">
             <div id="order">
-
+                    <h2 id="title" class="text-center">Order Detail - <%= header.id %> </h2>
             </div>
         </div>
-    </div>
-
-        <h2 id="title" class="text-center">Order Detail - <%= order.name %></h2>
-        <br>
-        
+    </div>    
         <!-- CLIENT DATA -->
 
         <div id="contact-info">
             <div class="row">
                 <label class="col-sm-3">Name: </label>
-                <h5>{{name}}</h5>
+                <h5><%= header.name %></h5>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">Address: </label>
-                <h5>{{address}}</h5>
+                <h5><%= header.address %> </h5>
             </div>
 
             <div class="row">
                 <label class="col-sm-3">Phone #: </label>
-                <h5>{{phone}}</h5>
+                <h5><%= header.phone %> </h5>
             </div>
         </div>
 
@@ -64,16 +60,17 @@
             <tbody>
                 <tr>
                     <td>
-                        <p id="size"> {{size}}</p>
+                        <p id="size"><%= details.size %></p>
                     </td>
                     <td id="ingredients">
-                        {{#ingredients}}
-                            <p>{{.}}</p>
-                        {{/ingredients}}
+                        <%details.ingredents.forEach(function(ingredent) {%>
+                            <%= ingredent %>
+                            <br>
+                        <%})%>
                     </td>
                 </tr>
                 <tr class="table-active">
-                    <th id="total" class="text-right" colspan="2">Total: ${{total}}</th>
+                    <th id="total" class="text-right" colspan="2">Total: <%= header.total %></th>
                 </tr>
             </tbody>
         </table>

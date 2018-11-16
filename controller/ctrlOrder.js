@@ -1,7 +1,8 @@
 const Order = require('../models/order');
 const clients = require('../staticModels/clients');
 const sizes = require('../staticModels/sizesPizza');
-const ingredents = require('../staticModels/ingredentsPizza'); 
+const ingredents = require('../staticModels/ingredentsPizza');
+const operations = require('../util/operations')
 
 //const _ = require('underscore');
 
@@ -56,9 +57,10 @@ let getOrders = (req,res)=>{
     
     Order.find({},(err,ordersBD)=>{
         
-        getOrdersWithNames(ordersBD);
+        let orders = getOrdersWithNames(ordersBD);
+        console.log(orders[0].client.name);
         res.render('orders',{
-            orders:ordersBD
+            orders
         })
     })
     
@@ -69,18 +71,61 @@ let getOrder = (req,res) =>{
     let idOrder = req.params.idOrder;
 
     Order.find({_id:idOrder},(err,orderBD)=>{
-        
-        getOrdersWithNames(orderBD);
+
+        let order = getOrdersWithNames(orderBD)[0];
+
+        let header = {
+            id : order._id,
+            name : order.client.name,
+            address : order.address,
+            phone : order.client.phone,
+            total: order.price
+        }
+
+        let details = {
+            size: order.pizzas.size,
+            ingredents : order.pizzas.ingredients
+        }
+
+
         res.render('order',{
-            order:orderBD
+            header,
+            details
+        })
+     
+    })
+        
+        
+
+}
+
+let getStatistics = (req,res)=>{
+
+    Order.find({},(err,ordersBD)=>{
+        
+        let average = operations.averageTotal(ordersBD);
+        let bestClient = operations.mostValuableCustomer(ordersBD);
+        let popularIngredients = operations.mostPopularIngredients(ordersBD)
+
+        let just3Ingredients = popularIngredients .slice(0,3);
+
+        console.log(just3Ingredients)
+
+        
+        res.render('statistics',{
+            average,
+            bestClient,
+            just3Ingredients
         })
     })
-
-
 
 }
 
 
+
+/**
+ * Funciones de Apoyo
+ */
 
 let calculatePrice  = (size,ingredientsE)=>{
 
@@ -102,25 +147,26 @@ let calculatePrice  = (size,ingredientsE)=>{
 
 let getOrdersWithNames = (orders)=>{
 
-    //let ordersObject = [];
 
     let ordersObject= orders.map(order =>{
-        //let  orderCopy = {...order};  
+          
         let client = clients.filter(client => client.id === order.idClient)
-        order.name = client[0].name;
-        console.log({order});
-        //ordersObject.push(orderCopy)
+        order.client = client[0];
         return order;
     })
-    console.log({ordersObject});
+
+    return ordersObject;
 }
+
+
 
 
 
 module.exports ={
   confirmOrder,
   getOrders,
-  getOrder
+  getOrder,
+  getStatistics
 }
 
 
